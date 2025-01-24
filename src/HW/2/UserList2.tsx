@@ -1,23 +1,14 @@
-import {CurrentUser} from './CurrentUser';
-import {UsersObjectType} from './HW2';
+import { UserType } from './HW2';
 
-type UserList2PropsType = {
-	users: any // пропиши типизацию
-	filterUsers: any // пропиши типизацию
+type CurrentUserPropsType = {
+  user: UserType
 };
 
-export const UserList2 = (props: UserList2PropsType) => {
-	return (
-		<div id={'hw02-users'}>
-			<h2>User List:</h2>
-
-			{/*<button id={'hw02-filter-button'} onClick={() => props.filterUsers}>SHOW ME FRIENDS FROM LA</button>*/}
-
-			{/*<ul>*/}
-			{/*  {props.users.myFriends.map((user) => (*/}
-			{/*    <ВЫЗЫВАЕМ КОМПОНЕНТУ CurrentUser />*/}
-			{/*  ))}*/}
-			{/*</ul>*/}
-		</div>
-	);
+export const CurrentUser = (props: CurrentUserPropsType) => {
+  return (
+    <li key={props.user.id} id={`hw02-user-${props.user.id}`}>
+      <strong>{props.user.name}</strong> (Age: {props.user.age})<strong> Address: </strong>
+      {props.user.address.street}, {props.user.address.city}
+    </li>
+  );
 };
